@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <style>
+    * { box-sizing: border-box; }
+    body {
+      font-family: Arial, sans-serif;
+      background: #f3f4f6;
+      margin: 0;
+      color: #1f2937;
+    }
+    header, main, footer { max-width: 480px; margin: 0 auto; padding: 16px; }
+    header h1 { margin-bottom: 4px; }
+    header p { margin-top: 0; color: #6b7280; }
+    form, #resumen {
+      background: #fff;
+      padding: 20px;
+      border-radius: 10px;
+      box-shadow: 0 2px 8px rgba(0,0,0,.08);
+    }
+    #resumen { margin-top: 16px; }
+    .campo { margin-bottom: 16px; }
+    label { display: block; font-weight: bold; margin-bottom: 6px; }
+    input {
+      width: 100%;
+      padding: 10px;
+      font-size: 1rem;
+      border: 2px solid #d1d5db;
+      border-radius: 6px;
+    }
+    input.invalido { border-color: #dc2626; }
+    input.valido { border-color: #16a34a; }
+    .error { color: #dc2626; font-size: .85rem; min-height: 1.1em; margin: 4px 0 0; }
+    button {
+      width: 100%;
+      padding: 12px;
+      font-size: 1rem;
+      background: #2563eb;
+      color: #fff;
+      border: none;
+      border-radius: 6px;
+      cursor: pointer;
+    }
+    button:hover { background: #1d4ed8; }
+    .oculto { display: none; }
+    dl { margin: 0; }
+    dt { font-weight: bold; margin-top: 10px; }
+    dd { margin: 2px 0 0; }
+    footer { text-align: center; color: #9ca3af; font-size: .8rem; }
+  </style>
+</head>
+<body>
+
+  <header>
+    <h1>Reserva tu mesa</h1>
+    <p>Completa los datos para confirmar tu reserva.</p>
+  </header>
+
+  <main>
+    <form id="formReserva" novalidate>
+      <div class="campo">
+        <label for="nombre">Nombre</label>
+        <input type="text" id="nombre" name="nombre" placeholder="Ej: Juan Pérez">
+        <p class="error" id="errorNombre"></p>
+      </div>
+
+      <div class="campo">
+        <label for="fecha">Fecha</label>
+        <input type="date" id="fecha" name="fecha">
+        <p class="error" id="errorFecha"></p>
+      </div>
+
+      <div class="campo">
+        <label for="personas">Cantidad de personas</label>
+        <input type="number" id="personas" name="personas" min="1" max="20" placeholder="1 a 20">
+        <p class="error" id="errorPersonas"></p>
+      </div>
+
+      <button type="submit">Reservar</button>
+    </form>
+
+    <section id="resumen" class="oculto" aria-live="polite">
+      <h2>Resumen de la reserva</h2>
+      <dl>
+        <dt>Nombre</dt>
+        <dd id="resNombre"></dd>
+        <dt>Fecha</dt>
+        <dd id="resFecha"></dd>
+        <dt>Personas</dt>
+        <dd id="resPersonas"></dd>
+      </dl>
+    </section>
+  </main>
+
+  <footer>
+    <p>Reto práctico individual: formulario + JavaScript</p>
+  </footer>
+
+  <script src="script.js" defer></script>
+</body>
+</html>
